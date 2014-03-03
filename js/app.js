@@ -22,13 +22,13 @@ $(document).ready(function(){
 				$(this).hide();
 				$(this).css('left', '-213px');
 			});
-		ryuReady = true;
+		
 		// show hadouken and animate it to the right of the screen
 	})
 	.mouseup(function(){
 		$('.ryu-throwing').hide();
 		$('.ryu-ready').show();
-		ryuReady = true;
+		
 		// ryu goes back to his ready position
 	});
 
