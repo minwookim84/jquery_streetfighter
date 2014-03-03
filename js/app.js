@@ -1,11 +1,14 @@
 $(document).ready(function(){
+	var ryuReady = false;
 	$('.ryu').mouseenter(function(){
 		$('.ryu-still').hide();
 		$('.ryu-ready').show();
+		ryuReady = true;
 	})
 	.mouseleave(function(){
 		$('.ryu-ready').hide();
 		$('.ryu-still').show();
+		ryuReady = false;
 	})
 	.mousedown(function(){
 		playHadouken();
@@ -19,11 +22,13 @@ $(document).ready(function(){
 				$(this).hide();
 				$(this).css('left', '-213px');
 			});
+		ryuReady = true;
 		// show hadouken and animate it to the right of the screen
 	})
 	.mouseup(function(){
 		$('.ryu-throwing').hide();
 		$('.ryu-ready').show();
+		ryuReady = true;
 		// ryu goes back to his ready position
 	});
 
@@ -39,9 +44,16 @@ $(document).ready(function(){
 		switch(parseInt(key.which,10)){
 			case 88:
 			$('.ryu-cool').hide();
-			$('.ryu-still').show();
-		}			
+			if (ryuReady)
+			{
+				$('.ryu-ready').show();
+			}
+			else
+			{
+				$('.ryu-still').show();}
+			}
 	});
+	
 });
 
 function playHadouken(){
